@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class WBColors {
-  static Color primary() {
-    return hexToColor("#3150A7");
-  }
+  static Color primary = hexToColor("#3150A7");
+  static Color inputBorderColor = hexToColor("#B4B4B4");
 }
 
 Color hexToColor(String code) {

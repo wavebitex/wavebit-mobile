@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:wavebitex/utils/auth/sign_up.dart';
+import 'package:wavebitex/ui/auth/sign_up.dart';
 import 'package:wavebitex/utils/splash/wavebit_colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: WBColors.primary(),
+      backgroundColor: WBColors.primary,
       body: const Center(
         child: Text(
           'Wavebit Exchange',
