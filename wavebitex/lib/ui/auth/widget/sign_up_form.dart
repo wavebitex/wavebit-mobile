@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wavebitex/ui/landing_page/index.dart';
 import 'package:wavebitex/widgets/action_button.dart';
 import 'package:wavebitex/widgets/agreement_checkbox.dart';
 import 'package:wavebitex/widgets/app_text_field.dart';
@@ -20,7 +21,9 @@ class _SignUpFormState extends State<SignUpForm> {
     });
   }
 
-  void onSubmit(){}
+  void onSubmit() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +47,12 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           _spacer,
           _spacer,
-          AgreementCheckbox(onChange: (_isUserAgreed) => _handleAgreement(), value: _isUserAgreed,),
+          AgreementCheckbox(
+            onChange: (_isUserAgreed) => _handleAgreement(),
+            value: _isUserAgreed,
+          ),
           _spacer,
-         ActionButton(title: 'Create Account', onTap: () => onSubmit())
+          ActionButton(title: 'Create Account', onTap: () => onSubmit())
         ],
       ),
     );

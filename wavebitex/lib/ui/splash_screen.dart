@@ -28,11 +28,17 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: WBColors.primary,
-      body: const Center(
-        child: Text(
-          'Wavebit Exchange',
-          style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold),
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children:  [
+          Center(child: Image.asset('assets/img/logo.png', height: 70,)),
+          const SizedBox(height: 15),
+         const  Text(
+            'Wavebit Exchange',
+            style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+          ),
+        ],
       ),
     );
   }
