@@ -18,7 +18,7 @@ class _SignUpPageState extends State<SignUpPage> {
         child: ListView(
           children: [
             SizedBox(height: _size.height * 0.1),
-            Container(child: Image.asset(''),),
+             Center(child: Image.asset('assets/img/logo.png', height: 70,)),
             SizedBox(height: _size.height * 0.075,),
             Container(
               alignment: Alignment.center,

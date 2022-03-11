@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wavebitex/ui/wallet/wallet.dart';
 import 'package:wavebitex/utils/splash/wavebit_colors.dart';
+import 'package:wavebitex/widget/bottom_nav.dart';
 import 'package:wavebitex/widget/credit_card.dart';
 import 'package:wavebitex/widget/wavebit_card.dart';
 
@@ -11,6 +13,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+
   Widget _buildWelcomeBar() {
     return Column(
       children: [
@@ -87,7 +91,7 @@ class _HomeState extends State<Home> {
               const SizedBox(height: 15),
               Container(
                   width: width,
-                  child: Text(
+                  child: const Text(
                       'You can copy directly the referal link or share directly with your contacts')),
             ],
           )
@@ -223,14 +227,7 @@ class _HomeState extends State<Home> {
           ),
         ]),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items:  [
-          BottomNavigationBarItem(label: '', icon: Icon(Icons.home, color: Colors.black.withOpacity(0.5),)),
-          BottomNavigationBarItem(label: '', icon: Icon(Icons.view_in_ar, color: Colors.black.withOpacity(0.5),)),
-          BottomNavigationBarItem(label: '', icon: Icon(Icons.compare_arrows, color: Colors.black.withOpacity(0.5),)),
-          BottomNavigationBarItem(label: '', icon: Icon(Icons.perm_identity, color: Colors.black.withOpacity(0.5),)),
-        ],
-      ),
+      bottomNavigationBar: AppBottomNav(),
     );
   }
 }
