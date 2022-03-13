@@ -22,7 +22,9 @@ class AuthServiceImpl extends AuthService {
       };
 
       var res = await _client.post(Endpoints.signUp, _data);
+
       print('Signup success =============================>$res');
+
       return res;
     } catch (e) {
       print('An Error occured during account creation =======> $e');
@@ -35,5 +37,7 @@ class AuthServiceImpl extends AuthService {
     required String email,
     required String password,
     required String phone,
-  }) async {}
+  }) async {
+    print('I will sign in later bro');
+  }
 }
