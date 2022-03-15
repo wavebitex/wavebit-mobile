@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:wavebitex/ui/wallet/wallet.dart';
+import 'package:wavebitex/data/auth/model/user.dart';
 import 'package:wavebitex/utils/splash/wavebit_colors.dart';
 import 'package:wavebitex/widget/bottom_nav.dart';
 import 'package:wavebitex/widget/credit_card.dart';
 import 'package:wavebitex/widget/wavebit_card.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  final User user;
+  const Home({Key? key, required this.user}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-
-
   Widget _buildWelcomeBar() {
     return Column(
       children: [
@@ -34,20 +33,16 @@ class _HomeState extends State<Home> {
                   Row(
                     children: [
                       Text(
-                        'John'.toUpperCase(),
+                        widget.user.fullName!.toUpperCase(),
                         style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
                         width: 5,
                       ),
-                      Text(
-                        'James'.toUpperCase(),
-                        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                      ),
                       const SizedBox(
                         width: 5,
                       ),
-                      Text('@james')
+                     const Text('@abcdef')
                     ],
                   )
                 ],

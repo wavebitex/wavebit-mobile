@@ -3,8 +3,9 @@ import 'package:wavebitex/utils/splash/wavebit_colors.dart';
 
 class ActionButton extends StatefulWidget {
   final String title;
-  final  Function() onTap;
-  const ActionButton({Key? key, required this.title, required this.onTap}) : super(key: key);
+  final bool isLoading;
+  final Function() onTap;
+  const ActionButton({Key? key, required this.title, required this.onTap, this.isLoading = false}) : super(key: key);
 
   @override
   _ActionButtonState createState() => _ActionButtonState();
@@ -14,16 +15,18 @@ class _ActionButtonState extends State<ActionButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.onTap,
+      onTap: widget.isLoading ? (){} : widget.onTap,
       child: Container(
         alignment: Alignment.center,
         height: 50,
         width: double.infinity,
-        child: Text(
+        child: widget.isLoading 
+        ? const CircularProgressIndicator( color: Colors.white)
+        : Text(
           widget.title,
           style: const TextStyle(color: Colors.white),
         ),
-        decoration: BoxDecoration(color: WBColors.primary, borderRadius: BorderRadius.circular(5)),
+        decoration: BoxDecoration(color: widget.isLoading ? WBColors.inActiveColor : WBColors.primary, borderRadius: BorderRadius.circular(5)),
       ),
     );
   }

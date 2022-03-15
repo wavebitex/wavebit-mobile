@@ -1,5 +1,7 @@
+import 'package:wavebitex/data/auth/model/user.dart';
+
 abstract class AuthService {
-  Future signUp({
+  Future<User?> signUp({
     required String fullName,
     required String email,
     required String password,

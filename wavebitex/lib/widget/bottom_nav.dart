@@ -8,27 +8,27 @@ class AppBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void handleBottomNavigation(int i) {
-  switch (i) {
-    case 0:
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Home()));
-      break;
-    case 1:
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Wallet()));
-      break;
-    case 2:
-      () {};
-      break;
-    case 3:
-       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignUpPage()));
-      break;
-    default:
-      Navigator.push(context, MaterialPageRoute(builder: (context) => const Home()));
-  }
-}
+//     void handleBottomNavigation(int i) {
+//   switch (i) {
+//     case 0:
+//       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Home()));
+//       break;
+//     case 1:
+//       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Wallet()));
+//       break;
+//     case 2:
+//       () {};
+//       break;
+//     case 3:
+//        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignUpPage()));
+//       break;
+//     default:
+//       Navigator.push(context, MaterialPageRoute(builder: (context) => const Home()));
+//   }
+// }
     return BottomNavigationBar(
         onTap: (i) {
-          handleBottomNavigation(i);
+          // handleBottomNavigation(i);
         },
         items: [
           BottomNavigationBarItem(
