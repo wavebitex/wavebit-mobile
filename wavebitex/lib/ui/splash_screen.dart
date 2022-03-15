@@ -14,7 +14,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void _onScreenReady() async {
     Timer( const Duration(milliseconds: 1500), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUpPage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignUpPage()));
     });
   }
 

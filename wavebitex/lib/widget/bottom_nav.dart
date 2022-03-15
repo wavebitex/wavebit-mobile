@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wavebitex/ui/auth/sign_up.dart';
-import 'package:wavebitex/ui/landing_page/index.dart';
-import 'package:wavebitex/ui/wallet/wallet.dart';
-
 class AppBottomNav extends StatelessWidget {
   const AppBottomNav({Key? key}) : super(key: key);
 

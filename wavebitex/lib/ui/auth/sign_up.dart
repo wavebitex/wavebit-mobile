@@ -23,7 +23,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Container(
               alignment: Alignment.center,
               child: const Text('Create your account', style: TextStyle(fontWeight: FontWeight.bold),)),
-            SignUpForm(),
+            const SignUpForm(),
           ],
         ),
       ),

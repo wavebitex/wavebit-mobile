@@ -12,7 +12,7 @@ class AgreementCheckbox extends StatelessWidget {
       children: [
         Checkbox(value: value, onChanged: onChange),
         const SizedBox(width: 5),
-        Container(
+        SizedBox(
             width: _size.width - 135,
             child: const Text(
                 'I agree that I am 18 years of age or older and agree to the User Agreeement Policy')),

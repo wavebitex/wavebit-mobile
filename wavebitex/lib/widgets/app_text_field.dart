@@ -13,18 +13,16 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: TextFormField(
-          controller: controller,
-          validator: validator,
-          autovalidateMode: autovalidateMode,
-          decoration: InputDecoration(
-              hintText: title,
-              suffixIcon: Icon(suffixIcon, color: WBColors.inputBorderColor),
-              enabledBorder:
-                  OutlineInputBorder(borderSide: BorderSide(color: WBColors.inputBorderColor)),
-              focusedBorder:
-                  OutlineInputBorder(borderSide: BorderSide(color: WBColors.inputBorderColor)))),
-    );
+    return TextFormField(
+        controller: controller,
+        validator: validator,
+        autovalidateMode: autovalidateMode,
+        decoration: InputDecoration(
+            hintText: title,
+            suffixIcon: Icon(suffixIcon, color: WBColors.inputBorderColor),
+            enabledBorder:
+                OutlineInputBorder(borderSide: BorderSide(color: WBColors.inputBorderColor)),
+            focusedBorder:
+                OutlineInputBorder(borderSide: BorderSide(color: WBColors.inputBorderColor))));
   }
 }

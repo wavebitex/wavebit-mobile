@@ -127,7 +127,7 @@ class WBToast {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.green,
         showProgressIndicator: true,
-        progressIndicatorValueColor: AlwaysStoppedAnimation(Colors.white),
-        margin: EdgeInsets.only(bottom: 40));
+        progressIndicatorValueColor: const AlwaysStoppedAnimation(Colors.white),
+        margin: const EdgeInsets.only(bottom: 40));
   }
 }

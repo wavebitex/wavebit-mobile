@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wavebitex/utils/splash/wavebit_colors.dart';
 import 'package:wavebitex/widget/bottom_nav.dart';
-import 'package:wavebitex/widget/wavebit_card.dart';
 
 import 'app_search_delegate.dart';
 
@@ -81,7 +80,7 @@ class _WalletState extends State<Wallet> {
                     width: 50,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        image: DecorationImage(image: AssetImage('assets/img/bitcoin_logo.png'))),
+                        image: const DecorationImage(image: AssetImage('assets/img/bitcoin_logo.png'))),
                   ),
                 ),
                 Expanded(
@@ -167,7 +166,7 @@ class _WalletState extends State<Wallet> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    Container(
+                    SizedBox(
                       width: double.infinity,
                       child: Text(
                         'Manage your asset activities here',

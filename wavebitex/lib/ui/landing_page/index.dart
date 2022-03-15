@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
   Widget _buildWelcomeBar() {
     return Column(
       children: [
-        Container(
+        SizedBox(
           height: 60,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -84,7 +84,7 @@ class _HomeState extends State<Home> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
               const SizedBox(height: 15),
-              Container(
+              SizedBox(
                   width: width,
                   child: const Text(
                       'You can copy directly the referal link or share directly with your contacts')),
@@ -115,12 +115,12 @@ class _HomeState extends State<Home> {
                 const SizedBox(width: 5),
                 Text(
                   content,
-                  style: TextStyle(fontSize: 12),
+                  style: const TextStyle(fontSize: 12),
                 ),
               ])
             ],
           ),
-          Icon(Icons.chevron_right)
+         const Icon(Icons.chevron_right)
         ],
       ),
     );
@@ -222,7 +222,7 @@ class _HomeState extends State<Home> {
           ),
         ]),
       ),
-      bottomNavigationBar: AppBottomNav(),
+      bottomNavigationBar: const AppBottomNav(),
     );
   }
 }
