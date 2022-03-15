@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:wavebitex/data/core/failure/failure.dart';
 import 'package:wavebitex/data/core/remote/endpoints.dart';
 
 class HttpClient {
@@ -8,7 +9,7 @@ class HttpClient {
     responseType: ResponseType.json,
     connectTimeout: 30000,
     receiveTimeout: 30000,
-    contentType: 'applicationt/json',
+    contentType: 'application/json',
   );
 
   static Dio createDio() {
@@ -51,10 +52,15 @@ class HttpClient {
     print('post url =====> $url');
     try {
       Response response = await dio.post(url, data: data);
+      print("Response $response");
+
       return response;
     } on DioError catch (e) {
-      print(' post Dio error ====> --$e');
-      return null;
+      if (e.response != null) {
+        throw Failure(e.response?.data['message']);
+      } else {
+        throw Failure('Something went wrong, please try again later');
+      }
     }
   }
 
@@ -64,7 +70,7 @@ class HttpClient {
       Response response = await dio.patch(url, data: data);
       return response;
     } on DioError catch (e) {
-      print('patch Dio error ====> --$e');
+      print('patch Dio error ====> $e');
       return null;
     }
   }

@@ -2,14 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:wavebitex/utils/splash/wavebit_colors.dart';
 
 class AppTextField extends StatelessWidget {
+  final AutovalidateMode autovalidateMode;
+  final TextEditingController? controller;
+  final String? Function(String? val)? validator;
   final String title;
   final IconData suffixIcon;
-  const AppTextField({Key? key,required this.title, required this.suffixIcon}) : super(key: key);
+  const AppTextField(
+      {Key? key, required this.title, required this.suffixIcon, this.controller, this.validator, this.autovalidateMode = AutovalidateMode.disabled})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: TextField(
+      child: TextFormField(
+          controller: controller,
+          validator: validator,
+          autovalidateMode: autovalidateMode,
           decoration: InputDecoration(
               hintText: title,
               suffixIcon: Icon(suffixIcon, color: WBColors.inputBorderColor),
