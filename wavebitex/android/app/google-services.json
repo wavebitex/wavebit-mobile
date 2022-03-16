@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "923292567831",
+    "project_id": "wavebitex-d6451",
+    "storage_bucket": "wavebitex-d6451.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923292567831:android:10e27cae3409c37205cf52",
+        "android_client_info": {
+          "package_name": "com.example.wavebitex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923292567831-9sfdptdtb0jij8imavtr7ubtsbcj6ekh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMr3J67FkWZujK5Ryn_Etu-BbKJz8R2F4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923292567831-9sfdptdtb0jij8imavtr7ubtsbcj6ekh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
