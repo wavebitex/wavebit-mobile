@@ -44,11 +44,30 @@ class AuthServiceImpl extends AuthService {
   }
 
   @override
-  Future signIn({
+  Future<User?> signIn({
     required String email,
     required String password,
-    required String phone,
   }) async {
-    print('I will sign in later bro');
+    try {
+      Map<String, dynamic> _data = {
+        'email': email,
+        'password': password,
+      };
+
+      var res = await _client.post(Endpoints.signIn, _data);
+      if (res != null) {
+        ApiResponse apiResponse = ApiResponse.fromJson(res.data);
+        WBToast.showSuccess(title: 'Sign up', message: apiResponse.message);
+        User user = User.fromJson(apiResponse.data);
+
+        print('Signed in user ============> ${user.toJson()}');
+
+        return user;
+      }
+    } on Failure catch (e) {
+      WBToast.showError(title: 'Error', message: e.errorMessage);
+      print('An Error occured during sign in =======> $e');
+      return null;
+    }
   }
 }

@@ -8,9 +8,8 @@ abstract class AuthService {
     required String phone,
   });
 
-  Future signIn({
+  Future<User?> signIn({
     required String email,
     required String password,
-    required String phone,
   });
 }
