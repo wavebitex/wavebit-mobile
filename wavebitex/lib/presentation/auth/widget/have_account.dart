@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wavebitex/ui/auth/sign_in.dart';
-import 'package:wavebitex/ui/auth/sign_up.dart';
+import 'package:wavebitex/presentation/auth/sign_in.dart';
+import 'package:wavebitex/presentation/auth/sign_up.dart';
 
 class HaveAccount extends StatelessWidget {
   final bool alreadyHaveAccount;
@@ -21,9 +21,9 @@ class HaveAccount extends StatelessWidget {
             onTap: () {
               alreadyHaveAccount
                   ? Navigator.pushReplacement(
-                      context, MaterialPageRoute(builder: (context) => SignUpPage()))
+                      context, MaterialPageRoute(builder: (context) => const SignUpPage()))
                   : Navigator.pushReplacement(
-                      context, MaterialPageRoute(builder: (context) => SignInPage()));
+                      context, MaterialPageRoute(builder: (context) => const SignInPage()));
             },
             child: Text(
               alreadyHaveAccount ? 'Sign Up' : 'Sign In',

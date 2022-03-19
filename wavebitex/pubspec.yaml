@@ -38,6 +38,8 @@ dependencies:
   firebase_core: ^1.12.0
   freezed_annotation: ^0.14.3
   json_annotation: ^4.1.0
+  bloc: ^8.0.3
+  flutter_bloc: ^8.0.1
 
 
 dev_dependencies:

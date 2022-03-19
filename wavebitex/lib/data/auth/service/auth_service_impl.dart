@@ -17,29 +17,19 @@ class AuthServiceImpl extends AuthService {
     required String password,
     required String phone,
   }) async {
-    try {
-      Map<String, dynamic> _data = {
-        'fullName': fullName,
-        'email': email,
-        'password': password,
-        'phone': phone,
-      };
+    Map<String, dynamic> _data = {
+      'fullName': fullName,
+      'email': email,
+      'password': password,
+      'phone': phone,
+    };
 
-      var res = await _client.post(Endpoints.signUp, _data);
-      if (res != null) {
-        ApiResponse apiResponse = ApiResponse.fromJson(res.data);
-        WBToast.showSuccess(title: 'Sign up', message: apiResponse.message);
-        User user = User.fromJson(apiResponse.data);
-
-        print('This is the user ============> ${user.toJson()}');
-
-        return user;
-      }
-    } on Failure catch (e) {
-      WBToast.showError(title: 'Error', message: e.errorMessage);
-    } catch (e) {
-      print('An Error occured during account creation =======> $e');
-      return null;
+    var res = await _client.post(Endpoints.signUp, _data);
+    if (res != null) {
+      ApiResponse apiResponse = ApiResponse.fromJson(res.data);
+      User user = User.fromJson(apiResponse.data);
+      
+      return user;
     }
   }
 
@@ -48,26 +38,17 @@ class AuthServiceImpl extends AuthService {
     required String email,
     required String password,
   }) async {
-    try {
-      Map<String, dynamic> _data = {
-        'email': email,
-        'password': password,
-      };
+    Map<String, dynamic> _data = {
+      'email': email,
+      'password': password,
+    };
 
-      var res = await _client.post(Endpoints.signIn, _data);
-      if (res != null) {
-        ApiResponse apiResponse = ApiResponse.fromJson(res.data);
-        WBToast.showSuccess(title: 'Sign up', message: apiResponse.message);
-        User user = User.fromJson(apiResponse.data);
+    var res = await _client.post(Endpoints.signIn, _data);
+    if (res != null) {
+      ApiResponse apiResponse = ApiResponse.fromJson(res.data);
+      User user = User.fromJson(apiResponse.data);
 
-        print('Signed in user ============> ${user.toJson()}');
-
-        return user;
-      }
-    } on Failure catch (e) {
-      WBToast.showError(title: 'Error', message: e.errorMessage);
-      print('An Error occured during sign in =======> $e');
-      return null;
+      return user;
     }
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wavebitex/data/auth/model/user.dart';
 import 'package:wavebitex/data/auth/service/auth_service.dart';
 import 'package:wavebitex/data/core/di/service_locator.dart';
-import 'package:wavebitex/ui/landing_page/index.dart';
+import 'package:wavebitex/presentation/landing_page/index.dart';
 import 'package:wavebitex/utils/validator/form_utils.dart';
 import 'package:wavebitex/widgets/action_button.dart';
 import 'package:wavebitex/widgets/app_text_field.dart';
