@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wavebitex/data/auth/model/user.dart';
 import 'package:wavebitex/data/auth/service/auth_service.dart';
 import 'package:wavebitex/data/core/di/service_locator.dart';
-import 'package:wavebitex/ui/landing_page/index.dart';
+import 'package:wavebitex/presentation/auth/cubit/auth_cubit.dart';
+import 'package:wavebitex/presentation/landing_page/index.dart';
 import 'package:wavebitex/utils/validator/form_utils.dart';
 import 'package:wavebitex/widgets/action_button.dart';
 import 'package:wavebitex/widgets/app_text_field.dart';
@@ -26,28 +28,12 @@ class _SignInFormState extends State<SignInForm> {
 
   final AuthService _authService = sl.get<AuthService>();
 
-  void onSubmit() async {
+  void onSubmit(BuildContext innerContext) async {
     if (_formKey.currentState!.validate()) {
       String _email = emailController.text;
       String _password = passwordController.text;
 
-      setState(() {
-        _isLoading = true;
-      });
-      User? _user = await _authService.signIn(
-          email: _email, password: _password);
-      setState(() {
-        _isLoading = false;
-      });
-
-      _user == null
-          ? () {}
-          : Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Home(
-                        user: _user,
-                      )));
+      innerContext.read<AuthCubit>().signIn(email: _email, password: _password);
     } else {
       setState(() {
         autovalidateMode = AutovalidateMode.always;
@@ -90,10 +76,30 @@ class _SignInFormState extends State<SignInForm> {
           ),
           _spacer,
           _spacer,
-          ActionButton(
-            title: 'Log In',
-            onTap: () => onSubmit(),
-            isLoading: _isLoading,
+          BlocBuilder<AuthCubit, AuthState>(
+            builder: (innerContext, state) {
+              final state = innerContext.watch<AuthCubit>().state;
+
+              return state.maybeWhen(
+                  signInInProgress: () {
+                    return ActionButton(
+                      title: 'Log In',
+                      onTap: () => onSubmit(innerContext),
+                      isLoading: true,
+                    );
+                  },
+                  signInSuccess: (user) {
+                    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+                      Navigator.pushReplacement(
+                          context, MaterialPageRoute(builder: (context) => Home(user: user!)));
+                    });
+                    return const SizedBox();
+                  },
+                  orElse: () => ActionButton(
+                        title: 'Log In',
+                        onTap: () => onSubmit(innerContext),
+                      ));
+            },
           )
         ],
       ),

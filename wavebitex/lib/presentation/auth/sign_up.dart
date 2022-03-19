@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:wavebitex/ui/auth/widget/have_account.dart';
-import 'package:wavebitex/ui/auth/widget/sign_in_form.dart';
+import 'package:wavebitex/presentation/auth/widget/have_account.dart';
+import 'package:wavebitex/presentation/auth/widget/sign_up_form.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
-  _SignInPageState createState() => _SignInPageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
@@ -23,10 +23,10 @@ class _SignInPageState extends State<SignInPage> {
             SizedBox(height: _size.height * 0.075,),
             Container(
               alignment: Alignment.center,
-              child: const Text('Login to Wavebit Exchange', style: TextStyle(fontWeight: FontWeight.bold),)),
-            const SignInForm(),
+              child: const Text('Create your account', style: TextStyle(fontWeight: FontWeight.bold),)),
+            const SignUpForm(),
             const SizedBox(height: 10),
-            const HaveAccount(alreadyHaveAccount: true,),
+            const HaveAccount(),
           ],
         ),
       ),

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:wavebitex/ui/auth/sign_up.dart';
+import 'package:wavebitex/presentation/auth/sign_up.dart';
 import 'package:wavebitex/utils/splash/wavebit_colors.dart';
 
 class SplashScreen extends StatefulWidget {
