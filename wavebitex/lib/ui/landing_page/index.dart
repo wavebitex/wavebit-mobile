@@ -30,10 +30,11 @@ class _HomeState extends State<Home> {
                     style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 7),
-                  Row(
+                 Row(
                     children: [
                       Text(
-                        widget.user.fullName!.toUpperCase(),
+                        widget.user.fullName?.toUpperCase() ??
+                        'User name',
                         style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
@@ -42,7 +43,7 @@ class _HomeState extends State<Home> {
                       const SizedBox(
                         width: 5,
                       ),
-                     const Text('@abcdef')
+                    const Text('@abcdef')
                     ],
                   )
                 ],
