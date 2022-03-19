@@ -24,7 +24,7 @@ class AuthCubit extends Cubit<AuthState> {
       User? user = await _authRepo.signUp(
           fullName: fullName, email: email, password: password, phone: phone);
 
-      emit(AuthState.signInSuccess(user));
+      emit(AuthState.signUpSuccess(user));
       WBToast.showSuccess(title: 'Error', message: 'Account created successfuly');
     } on Failure catch (e) {
       emit(AuthState.signUpError(e.errorMessage));
@@ -32,9 +32,26 @@ class AuthCubit extends Cubit<AuthState> {
     } catch (e) {
       WBToast.showError(
           title: 'Error', message: 'Something went wrong, try again later of contact admin');
-      print('Something went wrong, try again later of contact admin');
     }
   }
 
+  void signIn({
+    required String email,
+    required String password,
+  }) async {
+    emit(const AuthState.signInInProgress());
 
+    try {
+      User? user = await _authRepo.signIn(email: email, password: password);
+
+      emit(AuthState.signInSuccess(user));
+      WBToast.showSuccess(title: 'Error', message: 'Sign in successfuly');
+    } on Failure catch (e) {
+      emit(AuthState.signInError(e.errorMessage));
+      WBToast.showError(title: 'Error', message: e.errorMessage);
+    } catch (e) {
+      WBToast.showError(
+          title: 'Error', message: 'Something went wrong, try again later of contact admin');
+    }
+  }
 }

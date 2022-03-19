@@ -135,7 +135,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       isLoading: true,
                     );
                   },
-                  signInSuccess: (user) {
+                  signUpSuccess: (user) {
                     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home(user: user!)));
                     });
