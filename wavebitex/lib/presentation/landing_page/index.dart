@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wavebitex/data/auth/model/user.dart';
+import 'package:wavebitex/presentation/Account/account_page.dart';
 import 'package:wavebitex/utils/splash/wavebit_colors.dart';
 import 'package:wavebitex/widget/bottom_nav.dart';
 import 'package:wavebitex/widget/credit_card.dart';
@@ -14,7 +15,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  Widget _buildWelcomeBar() {
+  final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey();
+  Widget _buildWelcomeBar(Function onAvatartClick) {
     return Column(
       children: [
         SizedBox(
@@ -30,11 +32,10 @@ class _HomeState extends State<Home> {
                     style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 7),
-                 Row(
+                  Row(
                     children: [
                       Text(
-                        widget.user.fullName?.toUpperCase() ??
-                        'User name',
+                        widget.user.fullName?.toUpperCase() ?? 'User name',
                         style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
@@ -43,19 +44,24 @@ class _HomeState extends State<Home> {
                       const SizedBox(
                         width: 5,
                       ),
-                    const Text('@abcdef')
+                      const Text('@abcdef')
                     ],
                   )
                 ],
               ),
-              Container(
-                height: 55,
-                width: 55,
-                decoration: BoxDecoration(
-                    border: Border.all(color: WBColors.primary, width: 2),
-                    borderRadius: BorderRadius.circular(40),
-                    image:
-                        const DecorationImage(image: AssetImage('assets/img/profile_avater1.png'))),
+              GestureDetector(
+                onTap: () {
+                  onAvatartClick();
+                },
+                child: Container(
+                  height: 55,
+                  width: 55,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: WBColors.primary, width: 2),
+                      borderRadius: BorderRadius.circular(40),
+                      image: const DecorationImage(
+                          image: AssetImage('assets/img/profile_avater1.png'))),
+                ),
               ),
             ],
           ),
@@ -121,7 +127,7 @@ class _HomeState extends State<Home> {
               ])
             ],
           ),
-         const Icon(Icons.chevron_right)
+          const Icon(Icons.chevron_right)
         ],
       ),
     );
@@ -171,12 +177,16 @@ class _HomeState extends State<Home> {
     final _size = MediaQuery.of(context).size;
 
     return Scaffold(
+      key: _scaffoldState,
+      drawer: const AccountPage(),
       body: Container(
         height: _size.height,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Column(children: [
           const SizedBox(height: 40),
-          _buildWelcomeBar(),
+          _buildWelcomeBar(() {
+            _scaffoldState.currentState!.openDrawer();
+          }),
           const SizedBox(height: 10),
           SizedBox(
             height: _size.height - 240,
