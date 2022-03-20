@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wavebitex/presentation/auth/auth_switch.dart';
+import 'package:wavebitex/presentation/auth/cubit/auth_cubit.dart';
+import 'package:wavebitex/presentation/auth/helpers/auth_helpers.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -35,7 +39,7 @@ class _AccountPageState extends State<AccountPage> {
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return Container(
-      padding: const EdgeInsets.only(left: 30, right: 30, top:50),
+      padding: const EdgeInsets.only(left: 30, right: 30, top: 50),
       height: _size.height,
       color: Colors.white,
       child: Column(
@@ -74,71 +78,71 @@ class _AccountPageState extends State<AccountPage> {
             child: ListView(
               padding: const EdgeInsets.only(top: 10),
               children: [
-               
                 _buildTile(
-                  ontap: (){},
-                  Leading: const Icon(Icons.person),
-                  title: const Text('Personal Information'),
-                  subTitile: const Text('Manage basic info and username'),
-                  trailing: const Icon(Icons.chevron_right)
-                ),
-                 const SizedBox(height: 14), 
+                    ontap: () {},
+                    Leading: const Icon(Icons.person),
+                    title: const Text('Personal Information'),
+                    subTitile: const Text('Manage basic info and username'),
+                    trailing: const Icon(Icons.chevron_right)),
+                const SizedBox(height: 14),
                 _buildTile(
-                  ontap: (){},
-                  Leading: const Icon(Icons.vpn_key),
-                  title: const Text('Password'),
-                  subTitile: const Text('Change your password'),
-                  trailing: const Icon(Icons.chevron_right)
-                ),
-                 const SizedBox(height: 14), 
+                    ontap: () {},
+                    Leading: const Icon(Icons.vpn_key),
+                    title: const Text('Password'),
+                    subTitile: const Text('Change your password'),
+                    trailing: const Icon(Icons.chevron_right)),
+                const SizedBox(height: 14),
                 _buildTile(
-                  ontap: (){},
-                  Leading: const Icon(Icons.call_merge_rounded),
-                  title: const Text('Withdrawal Pin'),
-                  subTitile: const Text('Manage your withdrawal pin'),
-                  trailing: const Icon(Icons.chevron_right)
-                ),
-                 const SizedBox(height: 14), 
+                    ontap: () {},
+                    Leading: const Icon(Icons.call_merge_rounded),
+                    title: const Text('Withdrawal Pin'),
+                    subTitile: const Text('Manage your withdrawal pin'),
+                    trailing: const Icon(Icons.chevron_right)),
+                const SizedBox(height: 14),
                 _buildTile(
-                  ontap: (){},
-                  Leading: const Icon(Icons.share),
-                  title: const Text('Referrals'),
-                  subTitile: const Text('Refer and earn'),
-                  trailing: const Icon(Icons.chevron_right)
-                ),
-                 const SizedBox(height: 14), 
+                    ontap: () {},
+                    Leading: const Icon(Icons.share),
+                    title: const Text('Referrals'),
+                    subTitile: const Text('Refer and earn'),
+                    trailing: const Icon(Icons.chevron_right)),
+                const SizedBox(height: 14),
                 _buildTile(
-                  ontap: (){},
-                  Leading: const Icon(Icons.fingerprint),
-                  title: const Text('Biometry'),
-                  subTitile: const Text('Login with biometry'),
-                  trailing: const Icon(Icons.chevron_right)
-                ),
-                 const SizedBox(height: 14), 
+                    ontap: () {},
+                    Leading: const Icon(Icons.fingerprint),
+                    title: const Text('Biometry'),
+                    subTitile: const Text('Login with biometry'),
+                    trailing: const Icon(Icons.chevron_right)),
+                const SizedBox(height: 14),
                 _buildTile(
-                  ontap: (){},
-                  Leading: const Icon(Icons.notifications),
-                  title: const Text('Notifications'),
-                  subTitile: const Text('Stay up to date with market'),
-                  trailing: const Icon(Icons.chevron_right)
-                ),
-                 const SizedBox(height: 14), 
+                    ontap: () {},
+                    Leading: const Icon(Icons.notifications),
+                    title: const Text('Notifications'),
+                    subTitile: const Text('Stay up to date with market'),
+                    trailing: const Icon(Icons.chevron_right)),
+                const SizedBox(height: 14),
                 _buildTile(
-                  ontap: (){},
-                  Leading: const Icon(Icons.help_outline),
-                  title: const Text('Get Help'),
-                  subTitile: const Text('Contact customer care'),
-                  trailing: const Icon(Icons.chevron_right)
+                    ontap: () {},
+                    Leading: const Icon(Icons.help_outline),
+                    title: const Text('Get Help'),
+                    subTitile: const Text('Contact customer care'),
+                    trailing: const Icon(Icons.chevron_right)),
+                const SizedBox(height: 14),
+                BlocBuilder<AuthCubit, AuthState>(
+                  builder: (innerContext, state) {
+                    return _buildTile(
+                        ontap: () async {
+                          await AuthHelpers.logOut();
+                          innerContext.read<AuthCubit>().reset();
+                          Navigator.pushReplacement(
+                              context, MaterialPageRoute(builder: (context) => AuthSwitch()));
+                        },
+                        Leading: const Icon(Icons.login_outlined),
+                        title: const Text('Log Out'),
+                        subTitile: const Text('Lorem ipsum jlaksdjs afda'),
+                        trailing: const Icon(Icons.chevron_right));
+                  },
                 ),
-                 const SizedBox(height: 14), 
-                _buildTile(
-                  ontap: (){},
-                  Leading: const Icon(Icons.login_outlined),
-                  title: const Text('Log Out'),
-                  subTitile: const Text('Lorem ipsum jlaksdjs afda'),
-                  trailing: const Icon(Icons.chevron_right)
-                ),
-                 const SizedBox(height: 14), 
+                const SizedBox(height: 14),
               ],
             ),
           )

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wavebitex/data/auth/service/auth_service.dart';
 import 'package:wavebitex/data/core/di/service_locator.dart';
+import 'package:wavebitex/presentation/auth/auth_switch.dart';
 import 'package:wavebitex/presentation/auth/cubit/auth_cubit.dart';
-import 'package:wavebitex/presentation/landing_page/index.dart';
 import 'package:wavebitex/utils/validator/form_utils.dart';
 import 'package:wavebitex/widgets/action_button.dart';
 import 'package:wavebitex/widgets/app_text_field.dart';
@@ -89,7 +89,7 @@ class _SignInFormState extends State<SignInForm> {
                   signInSuccess: (user) {
                     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
                       Navigator.pushReplacement(
-                          context, MaterialPageRoute(builder: (context) => Home(user: user!)));
+                          context, MaterialPageRoute(builder: (context) => AuthSwitch(user: user!)));
                     });
                     return const SizedBox();
                   },
