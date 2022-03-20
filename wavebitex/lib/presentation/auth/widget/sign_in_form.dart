@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wavebitex/data/auth/model/user.dart';
 import 'package:wavebitex/data/auth/service/auth_service.dart';
 import 'package:wavebitex/data/core/di/service_locator.dart';
 import 'package:wavebitex/presentation/auth/cubit/auth_cubit.dart';
@@ -18,7 +17,6 @@ class SignInForm extends StatefulWidget {
 
 class _SignInFormState extends State<SignInForm> {
   final SizedBox _spacer = const SizedBox(height: 20);
-  bool _isLoading = false;
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   final _formKey = GlobalKey<FormState>();
