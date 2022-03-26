@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wavebitex/data/auth/model/user.dart';
 import 'package:wavebitex/presentation/Account/account_page.dart';
+import 'package:wavebitex/presentation/kyc/index.dart';
 import 'package:wavebitex/utils/splash/wavebit_colors.dart';
 import 'package:wavebitex/widget/bottom_nav.dart';
 import 'package:wavebitex/widget/credit_card.dart';
@@ -103,32 +104,40 @@ class _HomeState extends State<Home> {
   }
 
   Widget _buildCheckListCard(
-      {required String title, required String subTitle, required String content}) {
-    return WBCard(
-      height: 80,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 15),
-              Row(children: [
-                Text(subTitle),
-                const SizedBox(width: 5),
+      {required String title,
+      required String subTitle,
+      required String content,
+      required Function onTap}) {
+    return GestureDetector(
+      onTap: () {
+        onTap();
+      },
+      child: WBCard(
+        height: 80,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 Text(
-                  content,
-                  style: const TextStyle(fontSize: 12),
+                  title,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
-              ])
-            ],
-          ),
-          const Icon(Icons.chevron_right)
-        ],
+                const SizedBox(height: 15),
+                Row(children: [
+                  Text(subTitle),
+                  const SizedBox(width: 5),
+                  Text(
+                    content,
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                ])
+              ],
+            ),
+            const Icon(Icons.chevron_right)
+          ],
+        ),
       ),
     );
   }
@@ -208,9 +217,13 @@ class _HomeState extends State<Home> {
                   _buildCheckListCard(
                       title: 'Verify KYC',
                       subTitle: 'Tier 1',
-                      content: 'Unlimited crypto swaps and withdrawals'),
+                      content: 'Unlimited crypto swaps and withdrawals',
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => KYCPage()));
+                      }),
                   const SizedBox(height: 2),
                   _buildCheckListCard(
+                      onTap: () {},
                       title: 'Enable 2FA',
                       subTitle: '',
                       content: 'Enable two Factor Authentication for more security'),
