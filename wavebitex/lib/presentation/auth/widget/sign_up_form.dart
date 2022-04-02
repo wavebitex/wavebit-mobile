@@ -8,7 +8,7 @@ import 'package:wavebitex/utils/Toast/toast_helper.dart';
 import 'package:wavebitex/utils/validator/form_utils.dart';
 import 'package:wavebitex/widgets/action_button.dart';
 import 'package:wavebitex/widgets/agreement_checkbox.dart';
-import 'package:wavebitex/widgets/app_text_field.dart';
+import 'package:wavebitex/widgets/form_widgets/app_text_field.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wavebitex/presentation/kyc/kyc_personal_info.dart';
 import 'package:wavebitex/presentation/kyc/widgets/kyc_item_row.dart';
 import 'package:wavebitex/presentation/kyc/widgets/verification_badge.dart';
-import 'package:wavebitex/utils/splash/wavebit_colors.dart';
 import 'package:wavebitex/widgets/circle_tick.dart';
 
 class KYCPage extends StatelessWidget {
@@ -34,6 +34,10 @@ class KYCPage extends StatelessWidget {
                   KYCItmeRow(
                     title: 'Personal Information',
                     icon: Icons.person_add_alt_1,
+                    onTap: () {
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => PersonalInfoKyc()));
+                    },
                   ),
                   SizedBox(height: 20),
                   KYCItmeRow(
@@ -138,7 +142,8 @@ class KYCPage extends StatelessWidget {
                       border: Border.all(color: Colors.black.withOpacity(.15)),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Column(children: [
+                    child: Column(
+                      children: [
                         Row(
                           children: [
                             CircleTick(),
@@ -150,7 +155,7 @@ class KYCPage extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 10),
-                         Row(
+                        Row(
                           children: [
                             CircleTick(),
                             SizedBox(width: 10),
@@ -161,7 +166,7 @@ class KYCPage extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 10),
-                         Row(
+                        Row(
                           children: [
                             CircleTick(),
                             SizedBox(width: 10),
@@ -171,7 +176,8 @@ class KYCPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                    ],),
+                      ],
+                    ),
                   ),
                 ],
               ),

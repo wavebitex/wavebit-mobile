@@ -6,7 +6,7 @@ import 'package:wavebitex/presentation/auth/auth_switch.dart';
 import 'package:wavebitex/presentation/auth/cubit/auth_cubit.dart';
 import 'package:wavebitex/utils/validator/form_utils.dart';
 import 'package:wavebitex/widgets/action_button.dart';
-import 'package:wavebitex/widgets/app_text_field.dart';
+import 'package:wavebitex/widgets/form_widgets/app_text_field.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({Key? key}) : super(key: key);
