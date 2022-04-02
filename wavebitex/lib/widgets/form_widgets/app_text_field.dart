@@ -6,9 +6,9 @@ class AppTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? Function(String? val)? validator;
   final String title;
-  final IconData suffixIcon;
+  final IconData? suffixIcon;
   const AppTextField(
-      {Key? key, required this.title, required this.suffixIcon, this.controller, this.validator, this.autovalidateMode = AutovalidateMode.disabled})
+      {Key? key, required this.title,  this.suffixIcon, this.controller, this.validator, this.autovalidateMode = AutovalidateMode.disabled})
       : super(key: key);
 
   @override
