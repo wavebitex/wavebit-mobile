@@ -223,7 +223,8 @@ class _HomeState extends State<Home> {
                       }),
                   const SizedBox(height: 2),
                   _buildCheckListCard(
-                      onTap: () {},
+                      onTap: () async {
+                      },
                       title: 'Enable 2FA',
                       subTitle: '',
                       content: 'Enable two Factor Authentication for more security'),

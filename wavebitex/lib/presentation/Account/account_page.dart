@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wavebitex/presentation/auth/auth_switch.dart';
 import 'package:wavebitex/presentation/auth/cubit/auth_cubit.dart';
 import 'package:wavebitex/presentation/auth/helpers/auth_helpers.dart';
+import 'package:wavebitex/widgets/modals/custom_modal_bottom_sheet.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -131,10 +132,16 @@ class _AccountPageState extends State<AccountPage> {
                   builder: (innerContext, state) {
                     return _buildTile(
                         ontap: () async {
-                          await AuthHelpers.logOut();
+                          AppModal.showMaterialModalBottomSheet(
+                            context: context,
+                            title: "Are you sure you want to log out?",
+                            action: () async{
+                                 await AuthHelpers.logOut();
                           innerContext.read<AuthCubit>().reset();
                           Navigator.pushReplacement(
                               context, MaterialPageRoute(builder: (context) => AuthSwitch()));
+                            }
+                          );
                         },
                         Leading: const Icon(Icons.login_outlined),
                         title: const Text('Log Out'),
