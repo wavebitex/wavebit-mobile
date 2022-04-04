@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wavebitex/data/auth/service/auth_service.dart';
-import 'package:wavebitex/data/core/di/service_locator.dart';
 import 'package:wavebitex/presentation/auth/auth_switch.dart';
 import 'package:wavebitex/presentation/auth/cubit/auth_cubit.dart';
 import 'package:wavebitex/utils/validator/form_utils.dart';
@@ -23,8 +21,6 @@ class _SignInFormState extends State<SignInForm> {
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
-  final AuthService _authService = sl.get<AuthService>();
 
   void onSubmit(BuildContext innerContext) async {
     if (_formKey.currentState!.validate()) {
@@ -57,7 +53,6 @@ class _SignInFormState extends State<SignInForm> {
               } else {
                 return 'Invalid Email';
               }
-              ;
             },
           ),
           _spacer,
@@ -89,7 +84,7 @@ class _SignInFormState extends State<SignInForm> {
                   signInSuccess: (user) {
                     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
                       Navigator.pushReplacement(
-                          context, MaterialPageRoute(builder: (context) => AuthSwitch(user: user!)));
+                          context, MaterialPageRoute(builder: (context) => AuthSwitch()));
                     });
                     return const SizedBox();
                   },

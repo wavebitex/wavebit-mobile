@@ -1,10 +1,8 @@
 import 'package:wavebitex/data/auth/model/user.dart';
 import 'package:wavebitex/data/auth/service/auth_service.dart';
-import 'package:wavebitex/data/core/failure/failure.dart';
 import 'package:wavebitex/data/core/model/api_response.dart';
 import 'package:wavebitex/data/core/remote/endpoints.dart';
 import 'package:wavebitex/data/core/remote/http_client.dart';
-import 'package:wavebitex/utils/Toast/toast_helper.dart';
 
 class AuthServiceImpl extends AuthService {
   final HttpClient _client;

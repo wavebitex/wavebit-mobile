@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:wavebitex/presentation/auth/sign_up.dart';
+import 'package:wavebitex/presentation/auth/auth_switch.dart';
 import 'package:wavebitex/utils/splash/wavebit_colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,7 +14,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void _onScreenReady() async {
     Timer( const Duration(milliseconds: 1500), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignUpPage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AuthSwitch()));
     });
   }
 

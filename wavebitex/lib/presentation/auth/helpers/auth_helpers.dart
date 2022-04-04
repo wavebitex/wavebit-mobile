@@ -1,4 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wavebitex/data/core/dao/dao.dart';
 import 'package:wavebitex/utils/constants.dart';
 
 class AuthHelpers {
@@ -14,7 +15,6 @@ class AuthHelpers {
   }
 
   static logOut() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(Constants.IS_AUTHENTICATED);
+    await Dao().deleteuserObj();
   }
 }

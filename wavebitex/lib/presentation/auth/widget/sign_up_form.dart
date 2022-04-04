@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wavebitex/data/auth/repository/auth_repo.dart';
-import 'package:wavebitex/data/core/di/service_locator.dart';
 import 'package:wavebitex/presentation/auth/auth_switch.dart';
 import 'package:wavebitex/presentation/auth/cubit/auth_cubit.dart';
 import 'package:wavebitex/utils/Toast/toast_helper.dart';
@@ -58,8 +56,6 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
-    final AuthRepo _authReop = sl.get<AuthRepo>();
-
     return Form(
       key: _formKey,
       child: Column(
@@ -88,7 +84,6 @@ class _SignUpFormState extends State<SignUpForm> {
               } else {
                 return 'Invalid Email';
               }
-              ;
             },
           ),
           _spacer,
@@ -137,7 +132,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   },
                   signUpSuccess: (user) {
                     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AuthSwitch(user: user!)));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AuthSwitch()));
                     });
                     return const SizedBox();
                   },
