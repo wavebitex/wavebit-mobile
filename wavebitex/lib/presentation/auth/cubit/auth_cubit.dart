@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:wavebitex/data/auth/model/user.dart';
 import 'package:wavebitex/data/auth/repository/auth_repo.dart';
 import 'package:wavebitex/data/core/failure/failure.dart';
+import 'package:wavebitex/data/core/dao/dao.dart';
 import 'package:wavebitex/presentation/auth/helpers/auth_helpers.dart';
 import 'package:wavebitex/utils/Toast/toast_helper.dart';
 
@@ -26,6 +27,7 @@ class AuthCubit extends Cubit<AuthState> {
           fullName: fullName, email: email, password: password, phone: phone);
 
       emit(AuthState.signUpSuccess(user));
+      await Dao().saveUserObj(user!);
       await AuthHelpers.setSuccessAuthStatus();
       WBToast.showSuccess(title: '', message: 'Account created successfuly');
     } on Failure catch (e) {
@@ -49,6 +51,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthState.signInSuccess(user));
       await AuthHelpers.setSuccessAuthStatus();
       await AuthHelpers.setSuccessAuthStatus();
+       await Dao().saveUserObj(user!);
 
       WBToast.showSuccess(title: '', message: 'Sign in successfuly');
     } on Failure catch (e) {

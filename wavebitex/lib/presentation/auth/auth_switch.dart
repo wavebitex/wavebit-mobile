@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:wavebitex/data/auth/model/user.dart';
+import 'package:wavebitex/data/core/dao/dao.dart';
 import 'package:wavebitex/presentation/auth/sign_up.dart';
 import 'package:wavebitex/presentation/landing_page/index.dart';
 
-import 'helpers/auth_helpers.dart';
-
 class AuthSwitch extends StatefulWidget {
-  final User? user;
-  const AuthSwitch({Key? key, this.user}) : super(key: key);
+  const AuthSwitch({Key? key}) : super(key: key);
 
   @override
   State<AuthSwitch> createState() => _AuthSwitchState();
@@ -15,14 +13,15 @@ class AuthSwitch extends StatefulWidget {
 
 class _AuthSwitchState extends State<AuthSwitch> {
   void checkAuth() async {
-    bool? isAuthenticated = await AuthHelpers.getAuthStatus();
+    User? saveUser = await Dao().getUserObj();
+    print("This is the authUser ======> $saveUser");
 
-    if (isAuthenticated != null && isAuthenticated) {
+    if (saveUser != null) {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
               builder: (context) => Home(
-                    user: widget.user!,
+                    user: saveUser,
                   )));
     } else {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUpPage()));

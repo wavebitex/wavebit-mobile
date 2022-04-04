@@ -10,6 +10,7 @@ import 'package:wavebitex/presentation/splash_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setUpLocator();
+  // await Dao().openWavebitBox();
   runApp(const GetMaterialApp(home: MyApp()));
 }
 

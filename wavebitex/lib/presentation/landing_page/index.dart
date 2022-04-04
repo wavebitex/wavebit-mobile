@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wavebitex/data/auth/model/user.dart';
+import 'package:wavebitex/data/core/dao/dao.dart';
 import 'package:wavebitex/presentation/Account/account_page.dart';
 import 'package:wavebitex/presentation/kyc/index.dart';
 import 'package:wavebitex/utils/splash/wavebit_colors.dart';
@@ -17,6 +18,18 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey();
+  late User? _user;
+
+  void getSavedUserObject() async {
+    _user = await Dao().getUserObj();
+  }
+
+  @override
+  void initState() {
+    getSavedUserObject();
+    super.initState();
+  }
+
   Widget _buildWelcomeBar(Function onAvatartClick) {
     return Column(
       children: [
@@ -223,8 +236,7 @@ class _HomeState extends State<Home> {
                       }),
                   const SizedBox(height: 2),
                   _buildCheckListCard(
-                      onTap: () async {
-                      },
+                      onTap: () async {},
                       title: 'Enable 2FA',
                       subTitle: '',
                       content: 'Enable two Factor Authentication for more security'),
