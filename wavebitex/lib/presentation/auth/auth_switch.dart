@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wavebitex/data/auth/model/user.dart';
 import 'package:wavebitex/data/core/dao/dao.dart';
 import 'package:wavebitex/presentation/auth/sign_up.dart';
-import 'package:wavebitex/presentation/landing_page/index.dart';
+import 'package:wavebitex/presentation/landing_page/home.dart';
 
 class AuthSwitch extends StatefulWidget {
   const AuthSwitch({Key? key}) : super(key: key);
