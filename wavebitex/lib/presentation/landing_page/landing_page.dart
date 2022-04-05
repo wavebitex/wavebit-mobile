@@ -1,34 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:wavebitex/data/auth/model/user.dart';
-import 'package:wavebitex/data/core/dao/dao.dart';
-import 'package:wavebitex/presentation/Account/account_page.dart';
 import 'package:wavebitex/presentation/kyc/index.dart';
 import 'package:wavebitex/utils/splash/wavebit_colors.dart';
-import 'package:wavebitex/widget/bottom_nav.dart';
-import 'package:wavebitex/widget/credit_card.dart';
-import 'package:wavebitex/widget/wavebit_card.dart';
+import 'package:wavebitex/widgets/credit_card.dart';
+import 'package:wavebitex/widgets/wavebit_card.dart';
 
-class Home extends StatefulWidget {
-  final User user;
-  const Home({Key? key, required this.user}) : super(key: key);
-
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey();
-  late User? _user;
-
-  void getSavedUserObject() async {
-    _user = await Dao().getUserObj();
-  }
-
-  @override
-  void initState() {
-    getSavedUserObject();
-    super.initState();
-  }
+class LandingPage extends StatelessWidget {
+   final User user;
+   final Function drawerHandler;
+  const LandingPage({ Key? key, required this.user, required this.drawerHandler }) : super(key: key);
 
   Widget _buildWelcomeBar(Function onAvatartClick) {
     return Column(
@@ -49,7 +29,7 @@ class _HomeState extends State<Home> {
                   Row(
                     children: [
                       Text(
-                        widget.user.fullName?.toUpperCase() ?? 'User name',
+                        user.fullName?.toUpperCase() ?? 'User name',
                         style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
@@ -194,20 +174,17 @@ class _HomeState extends State<Home> {
     );
   }
 
+   
+
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
-
-    return Scaffold(
-      key: _scaffoldState,
-      drawer: const AccountPage(),
-      body: Container(
-        height: _size.height,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: Column(children: [
+    return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      child: Column(children: [
           const SizedBox(height: 40),
           _buildWelcomeBar(() {
-            _scaffoldState.currentState!.openDrawer();
+            drawerHandler();
           }),
           const SizedBox(height: 10),
           SizedBox(
@@ -258,8 +235,6 @@ class _HomeState extends State<Home> {
             ),
           ),
         ]),
-      ),
-      bottomNavigationBar: const AppBottomNav(),
     );
   }
 }

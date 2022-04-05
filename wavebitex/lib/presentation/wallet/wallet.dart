@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wavebitex/utils/splash/wavebit_colors.dart';
-import 'package:wavebitex/widget/bottom_nav.dart';
+import 'package:wavebitex/widgets/bottom_nav.dart';
 
 import 'app_search_delegate.dart';
 
@@ -141,8 +141,7 @@ class _WalletState extends State<Wallet> {
       );
     }
 
-    return Scaffold(
-      body: Container(
+    return Container(
         height: _size.height,
         padding: const EdgeInsets.symmetric(horizontal: 25),
         child: Column(
@@ -197,8 +196,6 @@ class _WalletState extends State<Wallet> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: const AppBottomNav(),
     );
   }
 }
