@@ -8,13 +8,13 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<User?> signUp({
-    required String fullName,
     required String email,
     required String password,
+    required String userName,
     required String phone,
   }) async {
     return await _authService.signUp(
-        fullName: fullName, email: email, password: password, phone: phone);
+         email: email, password: password, phone: phone, userName: userName);
   }
 
   Future<User?> signIn({

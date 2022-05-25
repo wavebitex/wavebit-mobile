@@ -24,7 +24,7 @@ class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
 
   TextEditingController emailController = TextEditingController();
-  TextEditingController fullNameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
@@ -37,13 +37,13 @@ class _SignUpFormState extends State<SignUpForm> {
   void onSubmit(BuildContext innerContext) async {
     if (_formKey.currentState!.validate()) {
       String _email = emailController.text;
-      String _fullName = fullNameController.text;
       String _password = passwordController.text;
+      String _userName = usernameController.text;
 
       if (_isUserAgreed == true) {
         innerContext
             .read<AuthCubit>()
-            .signUp(fullName: _fullName, email: _email, password: _password, phone: '070');
+            .signUp(email: _email, password: _password, phone: '070', userName: _userName);
       } else {
         WBToast.showError(title: 'Error', message: 'Kindly accept terms and condition to proceed');
       }
@@ -62,18 +62,6 @@ class _SignUpFormState extends State<SignUpForm> {
         children: [
           _spacer,
           AppTextField(
-            controller: fullNameController,
-            title: 'Full Name',
-            suffixIcon: Icons.password,
-            autovalidateMode: autovalidateMode,
-            validator: (val) {
-              return (FormUtils.hasMinLength(val, minLength: 2))
-                  ? null
-                  : 'Full name lenght must be greater than 2';
-            },
-          ),
-          _spacer,
-          AppTextField(
             controller: emailController,
             title: 'Email',
             suffixIcon: Icons.email,
@@ -83,6 +71,20 @@ class _SignUpFormState extends State<SignUpForm> {
                 return null;
               } else {
                 return 'Invalid Email';
+              }
+            },
+          ),
+          _spacer,
+          AppTextField(
+            controller: usernameController,
+            title: 'Username',
+            suffixIcon: Icons.person,
+            autovalidateMode: autovalidateMode,
+            validator: (val) {
+              if (val != null && val.isNotEmpty) {
+                return null;
+              } else {
+                return 'Username can not be empty';
               }
             },
           ),
@@ -132,7 +134,8 @@ class _SignUpFormState extends State<SignUpForm> {
                   },
                   signUpSuccess: (user) {
                     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AuthSwitch()));
+                      Navigator.pushReplacement(
+                          context, MaterialPageRoute(builder: (context) => AuthSwitch()));
                     });
                     return const SizedBox();
                   },

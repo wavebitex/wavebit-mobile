@@ -10,15 +10,15 @@ class AuthServiceImpl extends AuthService {
   AuthServiceImpl(this._client);
   @override
   Future<User?> signUp({
-    required String fullName,
     required String email,
     required String password,
+    required String userName,
     required String phone,
   }) async {
     Map<String, dynamic> _data = {
-      'fullName': fullName,
       'email': email,
       'password': password,
+      'username': userName,
       'phone': phone,
     };
 
