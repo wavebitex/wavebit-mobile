@@ -15,16 +15,16 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this._authRepo) : super(const AuthState.initial());
 
   void signUp({
-    required String fullName,
     required String email,
     required String password,
+    required String userName,
     required String phone,
   }) async {
     emit(const AuthState.signUpInProgress());
 
     try {
       User? user = await _authRepo.signUp(
-          fullName: fullName, email: email, password: password, phone: phone);
+          email: email, password: password, phone: phone, userName: userName);
 
       emit(AuthState.signUpSuccess(user));
       await Dao().saveUserObj(user!);
@@ -51,7 +51,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthState.signInSuccess(user));
       await AuthHelpers.setSuccessAuthStatus();
       await AuthHelpers.setSuccessAuthStatus();
-       await Dao().saveUserObj(user!);
+      await Dao().saveUserObj(user!);
 
       WBToast.showSuccess(title: '', message: 'Sign in successfuly');
     } on Failure catch (e) {

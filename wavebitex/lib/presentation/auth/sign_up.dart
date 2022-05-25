@@ -18,7 +18,7 @@ class _SignUpPageState extends State<SignUpPage> {
         padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
         child: ListView(
           children: [
-            SizedBox(height: _size.height * 0.1),
+            SizedBox(height: _size.height * 0.05),
              Center(child: Image.asset('assets/img/logo.png', height: 70,)),
             SizedBox(height: _size.height * 0.075,),
             Container(
