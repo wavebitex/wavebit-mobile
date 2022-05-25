@@ -18,11 +18,12 @@ class AppTextField extends StatelessWidget {
         validator: validator,
         autovalidateMode: autovalidateMode,
         decoration: InputDecoration(
+          contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
             hintText: title,
             suffixIcon: Icon(suffixIcon, color: WBColors.inputBorderColor),
             enabledBorder:
-                OutlineInputBorder(borderSide: BorderSide(color: WBColors.inputBorderColor)),
+                OutlineInputBorder(borderSide: BorderSide(color: WBColors.inputBorderColor.withOpacity(.5))),
             focusedBorder:
-                OutlineInputBorder(borderSide: BorderSide(color: WBColors.inputBorderColor))));
+                OutlineInputBorder(borderSide: BorderSide(color: WBColors.inputBorderColor.withOpacity(.5)))));
   }
 }

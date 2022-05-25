@@ -58,7 +58,8 @@ class PersonalInfoKyc extends StatelessWidget {
                 items: workStatusList,
                 hint: "Work Status",
               ),
-          
+              _spacer,
+              _spacer,
               _spacer,
               ActionButton(title: "Submit", onTap: () {})
             ],
